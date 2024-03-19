@@ -1,0 +1,12 @@
+<!--  -->
+
+<div class="min-h-screen min-w-screen flex items-center justify-center">
+  <div class="container px-32 flex flex-col gap-8 text-center">
+    <h1 class="font-bold text-4xl space-x-2">
+      <span class="text-primary">Yet</span>
+      <span class="text-secondary">Another</span>
+      <span class="text-accent">Google</span>
+    </h1>
+    <app-search-input (searchInputEmitter)="getSearchTerm($event)" />
+  </div>
+</div>

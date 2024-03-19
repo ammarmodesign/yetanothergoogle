@@ -1,0 +1,60 @@
+<div class="navbar bg-base-300 backdrop-filter backdrop-blur-2xl">
+  <div class="container mx-auto">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl">YetAnotherGoogle</a>
+    </div>
+    <div class="flex-none gap-2">
+      <div class="form-control">
+        <!-- <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" /> -->
+        <app-search-input (searchInputEmitter)="getSearchTerm($event)" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cards-wrapper my-16">
+  <div class="container mx-auto">
+    @if(!isLoading) { @if(searchRes[0].status === 200) {
+
+    <div class="left-col flex flex-col gap-4">
+      @for (search of searchRes; track $index) { @for (organic_result of
+      search.data.organic_results; track $index) {
+      <app-search-link
+        [title]="organic_result.title"
+        [desc]="organic_result.desc"
+        [link]="organic_result.url"
+      />
+      } }
+    </div>
+
+    } } @if(isLoading) {
+    <p>loading .....</p>
+    }
+  </div>
+</div>
+
+<!-- @if(!isLoading) {
+<div class="container mx-auto px-4"> -->
+<!-- @if(searchRes[0].status === 200) { -->
+<!--
+  <div class="left-col">
+    @for (search of searchRes; track $index) { @for (organic_result of
+    search.data.organic_results; track $index) {
+    <app-search-link
+      [title]="organic_result.title"
+      [desc]="organic_result.desc"
+      [link]="organic_result.url"
+    />
+    } }  </div> -->
+
+<!-- } -->
+<!-- </div>
+} @if(isLoading) {
+<p>loading .....</p>
+} -->
+<!-- data
+:
+{result_stat: 'About 4,980,000,000 results (0.50 seconds)', organic_results: Array(4), related_questions: Array(0), image_results: Array(0), image_filters: Array(0), …}
+status
+:
+200 -->
